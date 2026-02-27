@@ -19,4 +19,9 @@ fun main() {
     println(task1.hashCode() == task2.hashCode())
     val (title, description, priority) = task1
     println("$title | $description | $priority")
+
+    val dev = DevelopmentDepartment()
+    val test = TestingDepartment()
+    dev.introduce()
+    test.introduce()
 }
