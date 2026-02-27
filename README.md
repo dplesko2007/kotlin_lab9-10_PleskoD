@@ -90,3 +90,62 @@ class MediaPlayer : VideoPlayable, AudioPlayable {
 1. Клонируйте репозиторий: git clone <URL>
 2. Откройте проект в IntelliJ IDEA
 3. Запустите Main.kt
+
+# Galaxy Outpost Manager
+***
+Учебный проект на Kotlin, демонстрирующий основы объектноориентированного
+программирования и архитектурные приёмы языка.
+***
+## Sealed-классы
+***
+**Sealed-классы** используются для представления ограниченного набора
+состояний
+или результатов, которые известны на этапе компиляции. Они позволяют:
+- гарантировать обработку всех возможных вариантов;
+- безопасно использовать конструкцию `when` без `else`;
+- удобно описывать состояния, события и результаты действий.
+### Пример: результат работы модуля
+``` kotlin
+sealed class ModuleResult {
+data class Success(val message: String) : ModuleResult()
+data class ResourceProduced(val resourceName: String, val amount:
+Int) : ModuleResult()
+data class NotEnoughResources(
+val resourceName: String, val required: Int, val available:
+Int
+) : ModuleResult()
+data class Error(val reason: String) : ModuleResult()
+}
+```
+## Object в Kotlin
+***
+**object** — это специальная конструкция Kotlin, которая создаёт
+единственный
+экземпляр класса (Singleton).
+
+Особенности:
+- создается при первом обращении
+- существует в одном экземпляре
+- не имеет конструктора
+### Пример: глобальный логгер
+```
+object Logger {
+private var counter = 0
+fun log(message: String) {
+counter++
+println("[$counter] $message")
+}
+}
+Logger.log("Инициализация системы")
+Logger.log("Модуль запущен")
+```
+### Использование:
+```
+Logger.log("Инициализация системы")
+Logger.log("Модуль запущен")
+```
+**object** удобно использовать для:
+- логгеров;
+- конфигураций;
+- состояний без данных в sealed-классах;
+- утилитарных классов.
