@@ -1,4 +1,5 @@
 import modules.EnergyGenerator
+import modules.ModuleResults
 import modules.ResearchLab
 import resources.OutpostResource
 import resources.ResourceManager
@@ -50,6 +51,24 @@ fun main() {
     val generator = EnergyGenerator()
     val lab = ResearchLab()
 
+    println()
+    manager.printAll()
+
+    fun handleModuleResult(result: ModuleResults) {
+        when (result) {
+            is ModuleResults.Success -> println("УСПЕХ: ${result.message}")
+            is ModuleResults.ResourceProduced ->
+                println("Произведено: ${result.resourceName} +${result.amount}")
+            is ModuleResults.NotEnoughResources ->
+                println("Недостаточно ресурса ${result.resourceName}. " + "Нужно: ${result.required}, есть:${result.available}")
+            is ModuleResults.Error ->
+                println("ОШИБКА: ${result.reason}")
+        }
+    }
+    val generatorResult = generator.performAction(manager)
+    val labResult = lab.performAction(manager)
+    handleModuleResult(generatorResult)
+    handleModuleResult(labResult)
     println()
     manager.printAll()
 }
