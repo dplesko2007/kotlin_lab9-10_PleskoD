@@ -24,4 +24,12 @@ fun main() {
     val test = TestingDepartment()
     dev.introduce()
     test.introduce()
+
+    val employee = Employee("Мария Иванова", "Тестировщик", 75000, 3)
+    val devDept = DevelopmentDepartment()
+    val reporters: List<ReportGenerator> = listOf(employee, devDept)
+    reporters.forEach { reporter ->
+        println(reporter.generateReport())
+        println()
+    }
 }
