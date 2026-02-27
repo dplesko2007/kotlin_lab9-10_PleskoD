@@ -25,4 +25,21 @@ yearsOfExperience: Int
     override fun generateReport(): String {
         return "ФИО: $fullName | Должность: $position | Зарплата: $salary | Опыт: $yearsOfExperience"
     }
+
+    var currentTask: task? = null
+        private set
+
+    fun assignTask(newTask: task) {
+        if (currentTask != null && currentTask!!.isCompleted == false) {
+            println("Сотрудник уже занят задачей: ${currentTask!!.title}")
+        } else {
+            currentTask = newTask
+            println("Задача '${newTask.title}' назначена сотруднику $fullName")
+        }
+    }
+
+    fun completeTask() {
+        currentTask = currentTask?.copy(isCompleted = true)
+        println("Задача '${currentTask?.title}' завершена!")
+    }
 }
