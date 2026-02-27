@@ -1,7 +1,12 @@
-//fun main() {
-//    val manager = ResourceManager()
-//    val minerals = OutpostResource(1, "Minerals", 300)
-//    val gas = OutpostResource(2, "Gas", 100)
+import modules.EnergyGenerator
+import modules.ResearchLab
+import resources.OutpostResource
+import resources.ResourceManager
+
+//fun characters.characters.example.example.resources.main() {
+//    val manager = resources.ResourceManager()
+//    val minerals = resources.OutpostResource(1, "Minerals", 300)
+//    val gas = resources.OutpostResource(2, "Gas", 100)
 //
 //    manager.add(minerals)
 //    manager.add(gas)
@@ -10,22 +15,15 @@
 //    val bonus = minerals.copy(amount = minerals.amount + 50)
 //    println("Копия минералов с бонусом: $bonus")
 //
-//    //    val denis: Human
-////    val pavel: Human("Pavel")
+//    //    val denis: example.Human
+////    val pavel: example.Human("Pavel")
 ////
-////    val denis2: Person = Person("Denis", 18)
-////    val maksim: Person = Person("Maksim", 20)
+////    val denis2: example.Person = example.Person("Denis", 18)
+////    val maksim: example.Person = example.Person("Maksim", 20)
 ////    denis2.hello()
 ////    maksim.hello()
 ////}
-////abstract class Human(val name: String) {
-////    abstract var age: Int
-////    abstract fun hello()
-////}
-////class Person(name: String, override var age: Int): Human(name) {
-////    override fun hello() {
-////        println("My name is $name")
-////    }
+
 ////}
 //    abstract class Figure {
 //        abstract fun perimeter(): Float
@@ -46,8 +44,8 @@
 fun main() {
     val manager = ResourceManager()
 
-    manager.add(OutpostResource(1,"Minerals",120))
-    manager.add(OutpostResource(2,"Gas",40))
+    manager.add(OutpostResource(1, "Minerals", 120))
+    manager.add(OutpostResource(2, "Gas", 40))
 
     val generator = EnergyGenerator()
     val lab = ResearchLab()
